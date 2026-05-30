@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rgc_lidar_bridge</name>
+  <version>0.1.0</version>
+  <description>
+    Recipe 03: bridge a 2D GPU LiDAR from Gazebo Harmonic into a ROS 2
+    sensor_msgs/LaserScan and visualize it in RViz.
+  </description>
+  <maintainer email="halilibrahimyesirci@users.noreply.github.com">Halil İbrahim Yesirci</maintainer>
+  <license>MIT</license>
+  <url type="repository">https://github.com/halilibrahimyesirci/ROS2GazeboCookbook</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>rosgraph_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

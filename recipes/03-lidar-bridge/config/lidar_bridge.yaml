@@ -1,0 +1,17 @@
+# Bridge the 2D laser scan and the clock from Gazebo to ROS.
+#
+# `frame_id: laser_frame` overrides the frame stamped on the LaserScan so it
+# matches the TF frame we publish; RViz then resolves the scan against its fixed
+# frame (base_link) through the static transform base_link -> laser_frame.
+- ros_topic_name: "/scan"
+  gz_topic_name: "/scan"
+  ros_type_name: "sensor_msgs/msg/LaserScan"
+  gz_type_name: "gz.msgs.LaserScan"
+  direction: GZ_TO_ROS
+  frame_id: "laser_frame"
+
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
