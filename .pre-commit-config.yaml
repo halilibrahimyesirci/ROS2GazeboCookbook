@@ -1,0 +1,34 @@
+# Pre-commit hooks. Install once with `pre-commit install`, then they run on
+# every commit. Run across the whole tree with `pre-commit run --all-files`.
+# Docs: https://pre-commit.com
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-yaml
+      - id: check-xml
+        files: \.(xml|sdf|urdf|world)$
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.3.0
+    hooks:
+      - id: codespell
+        args: [--ignore-words=codespell-ignore.txt]
+        exclude: \.(rviz|svg|png|gif)$
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.4
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.16.0
+    hooks:
+      - id: markdownlint-cli2
