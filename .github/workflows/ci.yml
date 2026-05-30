@@ -1,0 +1,116 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Proves the stack that recipes/00-setup documents actually installs and that
+  # Gazebo Harmonic + ros_gz are importable - a cheap, honest reliability signal.
+  toolchain:
+    name: toolchain check (00-setup)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: osrf/ros:jazzy-desktop
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ros_gz (pulls Gazebo Harmonic)
+        shell: bash
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ros-jazzy-ros-gz
+      - name: Verify the toolchain
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          gz sim --version
+          ros2 pkg prefix ros_gz_sim
+          ros2 pkg prefix ros_gz_bridge
+          ros2 pkg prefix ros_gz_image
+
+  # Builds every recipe, launches it headless, and asserts its topics appear.
+  build-and-smoke:
+    name: build + headless smoke (${{ matrix.recipe }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: osrf/ros:jazzy-desktop
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - recipe: 01-spawn-robot
+            package: rgc_spawn_robot
+            launch: spawn_robot.launch.py
+            topics: "/clock"
+          - recipe: 02-camera-bridge
+            package: rgc_camera_bridge
+            launch: camera_bridge.launch.py
+            topics: "/camera,/camera_info,/clock"
+            data_topic: "/camera"
+          - recipe: 03-lidar-bridge
+            package: rgc_lidar_bridge
+            launch: lidar_bridge.launch.py
+            topics: "/scan,/clock"
+            data_topic: "/scan"
+          - recipe: 04-diffdrive-teleop
+            package: rgc_diffdrive_teleop
+            launch: diffdrive.launch.py
+            topics: "/cmd_vel,/odom,/tf,/imu,/clock"
+            data_topic: "/odom"
+    env:
+      # Force off-screen, software rendering so camera/LiDAR render without a GPU.
+      DISPLAY: ""
+      QT_QPA_PLATFORM: offscreen
+      LIBGL_ALWAYS_SOFTWARE: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Gazebo Harmonic + software GL
+        shell: bash
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ros-jazzy-ros-gz ros-jazzy-teleop-twist-keyboard \
+            libgl1-mesa-dri libegl-mesa0 libegl1 xvfb
+          rosdep update
+
+      - name: Build the workspace
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          rosdep install --from-paths recipes --ignore-src -r -y || true
+          colcon build --event-handlers console_direct+
+
+      - name: "Tier 2 - headless smoke (topics must appear)"
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          source install/setup.bash
+          bash tools/smoke_test.sh "${{ matrix.package }}" "${{ matrix.launch }}" "${{ matrix.topics }}"
+
+      - name: "Tier 3 - real sensor data (best-effort, non-gating)"
+        if: ${{ matrix.data_topic != '' }}
+        continue-on-error: true
+        shell: bash
+        run: |
+          source /opt/ros/jazzy/setup.bash
+          source install/setup.bash
+          bash tools/data_check.sh "${{ matrix.package }}" "${{ matrix.launch }}" "${{ matrix.data_topic }}"
+
+      - name: Upload logs on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ matrix.recipe }}
+          path: |
+            log/**
+          if-no-files-found: ignore
