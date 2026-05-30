@@ -1,0 +1,18 @@
+# The raw image is bridged separately by `ros_gz_image image_bridge` (it handles
+# image_transport correctly). Here we bridge the camera_info and the clock.
+#
+# `frame_id` overrides the frame stamped on the ROS message so it matches the
+# TF frame we publish (camera_link). The camera_info is published by Gazebo as a
+# sibling of the image topic, i.e. /camera_info.
+- ros_topic_name: "/camera_info"
+  gz_topic_name: "/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+  frame_id: "camera_link"
+
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
