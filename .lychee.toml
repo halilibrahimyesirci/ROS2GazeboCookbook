@@ -1,0 +1,13 @@
+# Link checker config: https://github.com/lycheeverse/lychee
+# Local hosts and sim endpoints are not reachable from CI.
+exclude = [
+  "^https?://(localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0)",
+  # Demo GIFs are recorded later by hand (see docs/media/RECORDING.md).
+  "docs/media/.*\\.gif",
+]
+exclude_path = ["build", "install", "log"]
+
+# Some hosts rate-limit or block bots; treat those as live, not broken.
+accept = ["200..=299", "403", "429"]
+max_retries = 2
+timeout = 20

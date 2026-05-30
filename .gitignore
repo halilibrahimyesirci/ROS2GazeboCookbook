@@ -1,0 +1,38 @@
+# --- ROS 2 / colcon build artifacts ---
+build/
+install/
+log/
+.colcon/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# --- C++ / CMake ---
+*.o
+*.so
+*.a
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# --- Gazebo runtime / logs ---
+.gz/
+*.log
+
+# --- Editors / IDEs ---
+.vscode/
+.idea/
+*.swp
+*~
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+desktop.ini

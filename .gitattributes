@@ -1,0 +1,12 @@
+# Normalize line endings to LF in the repo so shell scripts (and everything
+# else) behave the same on Linux/macOS/Windows.
+* text=auto eol=lf
+
+# Scripts must be LF or bash will choke on CRLF.
+*.sh   text eol=lf
+
+# Treat binary assets as binary.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
