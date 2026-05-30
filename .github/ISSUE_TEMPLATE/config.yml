@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Roadmap
+    url: https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/blob/main/ROADMAP.md
+    about: See what's planned and where your idea fits.
+  - name: Contributing guide
+    url: https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/blob/main/CONTRIBUTING.md
+    about: How to add a recipe or send a fix.
