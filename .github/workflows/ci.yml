@@ -21,7 +21,7 @@ jobs:
     container:
       image: osrf/ros:jazzy-desktop
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install ros_gz (pulls Gazebo Harmonic)
         shell: bash
         run: |
@@ -72,7 +72,7 @@ jobs:
       QT_QPA_PLATFORM: offscreen
       LIBGL_ALWAYS_SOFTWARE: "1"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Gazebo Harmonic + software GL
         shell: bash
