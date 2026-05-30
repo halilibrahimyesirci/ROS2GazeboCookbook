@@ -1,0 +1,68 @@
+name: Bug report / broken recipe
+description: A recipe failed to run or behaved unexpectedly.
+title: "[bug] <recipe>: <short description>"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for the report. The versions matter a lot here — please fill them in so the issue can be reproduced."
+  - type: dropdown
+    id: recipe
+    attributes:
+      label: Recipe
+      options:
+        - 00-setup
+        - 01-spawn-robot
+        - 02-camera-bridge
+        - 03-lidar-bridge
+        - 04-diffdrive-teleop
+        - other / not sure
+    validations:
+      required: true
+  - type: input
+    id: ros_distro
+    attributes:
+      label: ROS 2 distro
+      placeholder: Jazzy
+    validations:
+      required: true
+  - type: input
+    id: gazebo
+    attributes:
+      label: Gazebo version
+      placeholder: Harmonic (gz-sim 8)
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: The exact command(s) you ran.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs / output
+      render: shell
+  - type: checkboxes
+    id: versions_match
+    attributes:
+      label: Confirmation
+      options:
+        - label: My versions match the ones the recipe states it was tested on.

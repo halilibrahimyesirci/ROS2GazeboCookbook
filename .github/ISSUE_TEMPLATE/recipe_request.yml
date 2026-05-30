@@ -1,0 +1,33 @@
+name: Recipe request
+description: Suggest a new recipe.
+title: "[recipe] <keyword>"
+labels: ["recipe-request"]
+body:
+  - type: markdown
+    attributes:
+      value: "Recipes stay small and single-purpose — small and working beats big and broken."
+  - type: input
+    id: keyword
+    attributes:
+      label: Recipe keyword / task
+      placeholder: e.g. depth camera bridge
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use case
+      description: What task are people getting stuck on that this would solve?
+    validations:
+      required: true
+  - type: input
+    id: stack
+    attributes:
+      label: Target stack
+      placeholder: ROS 2 Jazzy + Gazebo Harmonic
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to help implement this.
