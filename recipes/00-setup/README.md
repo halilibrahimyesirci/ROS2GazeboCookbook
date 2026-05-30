@@ -3,7 +3,7 @@
 Install the exact stack this cookbook targets and prove the ROS ↔ Gazebo bridge
 works before you run any recipe.
 
-### Target stack
+## Target stack
 
 | Component | Version |
 |-----------|---------|
