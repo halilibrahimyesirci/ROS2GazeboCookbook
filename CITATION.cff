@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this cookbook, please cite it as below."
+title: "ROS 2 + Gazebo Cookbook"
+abstract: >-
+  Minimal, copy-paste-able, CI-verified recipes for ROS 2 Jazzy and Gazebo
+  Harmonic (gz-sim / ros_gz).
+type: software
+authors:
+  - family-names: "Yesirci"
+    given-names: "Halil İbrahim"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # add if you have one
+repository-code: "https://github.com/halilibrahimyesirci/ROS2GazeboCookbook"
+url: "https://github.com/halilibrahimyesirci/ROS2GazeboCookbook"
+license: MIT
+version: "0.1.0"
+date-released: "2026-05-31"
+keywords:
+  - ROS 2
+  - Gazebo
+  - Harmonic
+  - Jazzy
+  - robotics
+  - simulation
+  - ros_gz
