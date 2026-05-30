@@ -1,0 +1,9 @@
+# Bridge only the simulation clock. With this in place, ROS nodes started with
+# use_sim_time:=true follow Gazebo's clock instead of the wall clock.
+# Format reference: ros_gz_bridge README (ros_topic_name / gz_topic_name /
+# ros_type_name / gz_type_name / direction).
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS

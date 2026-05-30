@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!--
+  A deliberately tiny robot: one rigid body shaped like a chassis with two wheel
+  visuals. It has no actuation - this recipe is only about getting a model into
+  the simulator. See recipe 04 for a driveable diff-drive robot.
+-->
+<sdf version="1.10">
+  <model name="robot">
+    <pose>0 0 0 0 0 0</pose>
+    <link name="base_link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.01</ixx><ixy>0</ixy><ixz>0</ixz>
+          <iyy>0.01</iyy><iyz>0</iyz><izz>0.01</izz>
+        </inertia>
+      </inertial>
+
+      <collision name="collision">
+        <geometry><box><size>0.4 0.2 0.1</size></box></geometry>
+      </collision>
+      <visual name="visual">
+        <geometry><box><size>0.4 0.2 0.1</size></box></geometry>
+        <material>
+          <ambient>0.2 0.4 0.8 1</ambient>
+          <diffuse>0.2 0.4 0.8 1</diffuse>
+        </material>
+      </visual>
+
+      <visual name="left_wheel">
+        <pose>-0.1 0.12 -0.03 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.06</radius><length>0.04</length></cylinder></geometry>
+        <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+      </visual>
+      <visual name="right_wheel">
+        <pose>-0.1 -0.12 -0.03 1.5708 0 0</pose>
+        <geometry><cylinder><radius>0.06</radius><length>0.04</length></cylinder></geometry>
+        <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material>
+      </visual>
+    </link>
+  </model>
+</sdf>
