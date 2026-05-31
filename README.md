@@ -43,6 +43,13 @@ asserted in CI. Demo GIFs are not recorded yet (see
 [docs/media/RECORDING.md](docs/media/RECORDING.md)); a recipe is only marked
 "done" once it also has one.
 
+## Migrating from Gazebo Classic?
+
+Moving a project off the end-of-life Gazebo Classic + `gazebo_ros_pkgs`? The
+[migration kit](migration/) maps the old plugins to the new `gz-sim` systems +
+`ros_gz` bridge, with a [cheatsheet](migration/cheatsheet.md) and the
+[common errors](migration/common-errors.md) you will hit.
+
 ## Target stack
 
 | Component | Version |
