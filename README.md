@@ -5,6 +5,7 @@
 
 [![CI](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/ci.yml/badge.svg)](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/ci.yml)
 [![Lint](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/lint.yml/badge.svg)](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/lint.yml)
+[![Docker](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/docker.yml/badge.svg)](https://github.com/halilibrahimyesirci/ROS2GazeboCookbook/actions/workflows/docker.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![ROS 2 Jazzy](https://img.shields.io/badge/ROS%202-Jazzy-22314E?logo=ros&logoColor=white)](https://docs.ros.org/en/jazzy/)
 [![Gazebo Harmonic](https://img.shields.io/badge/Gazebo-Harmonic-FB6A2F)](https://gazebosim.org/docs/harmonic/)
@@ -69,6 +70,19 @@ ros2 launch rgc_spawn_robot spawn_robot.launch.py
 
 New to the stack? Start with [recipes/00-setup](recipes/00-setup/), which also
 verifies the bridge end-to-end before you run anything else.
+
+## Run in Docker
+
+No local ROS/Gazebo? Build and run everything in a container:
+
+```bash
+docker build -t ros2gazebo-cookbook .
+docker run --rm -it ros2gazebo-cookbook \
+  ros2 launch rgc_reference_robot reference_robot.launch.py headless:=true
+```
+
+The image ships the workspace pre-built. For the Gazebo/RViz GUI and the VS Code
+Dev Container, see [docker/README.md](docker/README.md).
 
 ## Repository layout
 

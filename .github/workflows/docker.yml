@@ -1,0 +1,24 @@
+name: docker
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-image:
+    name: build container image
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the image
+        run: docker build -t ros2gazebo-cookbook:ci .
+      - name: Check ROS + Gazebo are usable inside the image
+        run: |
+          docker run --rm ros2gazebo-cookbook:ci gz sim --version
+          docker run --rm ros2gazebo-cookbook:ci ros2 pkg prefix rgc_reference_robot
