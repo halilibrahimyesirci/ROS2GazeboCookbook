@@ -94,6 +94,13 @@ jobs:
             data_topic: "/map"
             extra_apt: "ros-jazzy-slam-toolbox"
             smoke_timeout: "75"
+          - recipe: 09-nav2-basic
+            package: rgc_nav2_basic
+            launch: nav2.launch.py
+            topics: "/global_costmap/costmap,/local_costmap/costmap,/scan,/clock"
+            data_topic: "/global_costmap/costmap"
+            extra_apt: "ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-slam-toolbox"
+            smoke_timeout: "110"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""
