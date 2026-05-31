@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rgc_rviz_config</name>
+  <version>0.2.0</version>
+  <description>
+    Recipe 06: ready-made, reusable RViz configurations for camera, LiDAR and TF,
+    with a small launcher to open them.
+  </description>
+  <maintainer email="halilibrahimyesirci@users.noreply.github.com">Halil İbrahim Yesirci</maintainer>
+  <license>MIT</license>
+  <url type="repository">https://github.com/halilibrahimyesirci/ROS2GazeboCookbook</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rviz2</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
