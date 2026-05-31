@@ -66,6 +66,15 @@ jobs:
             launch: diffdrive.launch.py
             topics: "/cmd_vel,/odom,/tf,/imu,/clock"
             data_topic: "/odom"
+          - recipe: 05-custom-world
+            package: rgc_custom_world
+            launch: custom_world.launch.py
+            topics: "/clock"
+          - recipe: 07-multiple-sensors
+            package: rgc_multiple_sensors
+            launch: multiple_sensors.launch.py
+            topics: "/camera,/scan,/imu,/clock"
+            data_topic: "/scan"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""
