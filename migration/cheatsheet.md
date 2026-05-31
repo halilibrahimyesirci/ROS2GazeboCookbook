@@ -52,14 +52,16 @@ needed to spawn).
 ## SDF changes
 
 - Bump the SDF version (Classic models are often `1.6`; Harmonic uses `1.10`+).
-- Plugin element changes from a shared-library reference to a system:
-  ```diff
-  - <plugin name="diff" filename="libgazebo_ros_diff_drive.so"> ... </plugin>
-  + <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive"> ... </plugin>
-  ```
 - Sensor `<topic>` sets the **gz** topic; the ROS topic comes from the bridge.
 - For RViz-friendly frames, set the bridged message's `frame_id` in the bridge
   YAML (`frame_id:` key) rather than relying on the scoped gz frame name.
+
+Plugin elements change from a shared-library reference to a system:
+
+```diff
+- <plugin name="diff" filename="libgazebo_ros_diff_drive.so"> ... </plugin>
++ <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive"> ... </plugin>
+```
 
 ## Message type bridge map
 
