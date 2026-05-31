@@ -82,6 +82,11 @@ jobs:
             package: rgc_spawn_from_fuel
             launch: spawn_from_fuel.launch.py
             topics: "/clock"
+          - recipe: reference-robot
+            package: rgc_reference_robot
+            launch: reference_robot.launch.py
+            topics: "/cmd_vel,/odom,/tf,/scan,/imu,/camera,/clock"
+            data_topic: "/scan"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""

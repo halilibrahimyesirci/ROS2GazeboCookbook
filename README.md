@@ -33,6 +33,7 @@ so they keep working. Full rationale and plan: [ROADMAP.md](ROADMAP.md).
 | 06 | [rviz-config](recipes/06-rviz-config/) | reusable RViz configs (camera/LiDAR/TF) | `ros2 launch rgc_rviz_config rviz.launch.py` | 🟢 code + CI |
 | 07 | [multiple-sensors](recipes/07-multiple-sensors/) | camera + LiDAR + IMU on one robot | `ros2 launch rgc_multiple_sensors multiple_sensors.launch.py` | 🟢 code + CI |
 | 08 | [spawn-from-fuel](recipes/08-spawn-from-fuel/) | pull models from Gazebo Fuel | `ros2 launch rgc_spawn_from_fuel spawn_from_fuel.launch.py` | 🟢 code + CI |
+| ★ | [reference-robot](recipes/reference-robot/) | drivable robot: diff-drive + camera + LiDAR + IMU | `ros2 launch rgc_reference_robot reference_robot.launch.py` | 🟢 code + CI |
 
 `🟢 code + CI` = builds, launches headless, and the expected ROS topics are
 asserted in CI. Demo GIFs are not recorded yet (see
