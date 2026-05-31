@@ -4,6 +4,9 @@ exclude = [
   "^https?://(localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0)",
   # Demo GIFs are recorded later by hand (see docs/media/RECORDING.md).
   "docs/media/.*\\.gif",
+  # Gazebo Fuel app/API: browsing pages bot-block, and model URIs contain spaces.
+  "app\\.gazebosim\\.org",
+  "fuel\\.gazebosim\\.org",
 ]
 exclude_path = ["build", "install", "log"]
 
