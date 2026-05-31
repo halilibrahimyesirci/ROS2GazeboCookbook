@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rgc_multiple_sensors</name>
+  <version>0.2.0</version>
+  <description>
+    Recipe 07: one robot carrying a camera, a 2D LiDAR and an IMU, all bridged
+    cleanly into ROS 2 and shown together in RViz.
+  </description>
+  <maintainer email="halilibrahimyesirci@users.noreply.github.com">Halil İbrahim Yesirci</maintainer>
+  <license>MIT</license>
+  <url type="repository">https://github.com/halilibrahimyesirci/ROS2GazeboCookbook</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_image</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>rosgraph_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
