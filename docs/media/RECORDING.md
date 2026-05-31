@@ -52,8 +52,8 @@ Replace the placeholder comment in the recipe's README with the image:
 ![demo](../../docs/media/03-lidar-bridge.gif)
 ```
 
-Then the recipe can move from `🟢 code + CI` to `✅ done` in the root README and
-ROADMAP once the GIF is committed.
+Then the recipe can move from `🟢 code + CI` to `✅ done` in the root README
+once the GIF is committed.
 
 ## Suggested shots
 

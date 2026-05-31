@@ -19,7 +19,7 @@ moving the community onto ROS 2 + the new Gazebo (`gz-sim` / `ros_gz`). Working,
 up-to-date examples for this stack are still scarce, and most search results
 point at outdated ROS 1 + Gazebo Classic material. This repo is a small set of
 single-purpose recipes that each solve one common task — and are verified in CI
-so they keep working. Full rationale and plan: [ROADMAP.md](ROADMAP.md).
+so they keep working.
 
 ## Recipes
 
