@@ -87,6 +87,12 @@ jobs:
             launch: reference_robot.launch.py
             topics: "/cmd_vel,/odom,/tf,/scan,/imu,/camera,/clock"
             data_topic: "/scan"
+          - recipe: 10-slam
+            package: rgc_slam
+            launch: slam.launch.py
+            topics: "/map,/scan,/clock"
+            data_topic: "/map"
+            extra_apt: "ros-jazzy-slam-toolbox"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""
@@ -101,7 +107,8 @@ jobs:
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             ros-jazzy-ros-gz ros-jazzy-teleop-twist-keyboard \
-            libgl1-mesa-dri libegl-mesa0 libegl1 xvfb
+            libgl1-mesa-dri libegl-mesa0 libegl1 xvfb \
+            ${{ matrix.extra_apt }}
           rosdep update
 
       - name: Build the workspace
