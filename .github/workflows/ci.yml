@@ -75,6 +75,13 @@ jobs:
             launch: multiple_sensors.launch.py
             topics: "/camera,/scan,/imu,/clock"
             data_topic: "/scan"
+          # 06 is RViz configs only (no sim/topics) -> build-only verification.
+          - recipe: 06-rviz-config
+            package: rgc_rviz_config
+          - recipe: 08-spawn-from-fuel
+            package: rgc_spawn_from_fuel
+            launch: spawn_from_fuel.launch.py
+            topics: "/clock"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""
@@ -100,6 +107,7 @@ jobs:
           colcon build --event-handlers console_direct+
 
       - name: "Tier 2 - headless smoke (topics must appear)"
+        if: ${{ matrix.topics != '' }}
         shell: bash
         run: |
           source /opt/ros/jazzy/setup.bash

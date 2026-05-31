@@ -30,7 +30,9 @@ so they keep working. Full rationale and plan: [ROADMAP.md](ROADMAP.md).
 | 03 | [lidar-bridge](recipes/03-lidar-bridge/) | 2D LiDAR → ROS, in RViz | `ros2 launch rgc_lidar_bridge lidar_bridge.launch.py` | 🟢 code + CI |
 | 04 | [diffdrive-teleop](recipes/04-diffdrive-teleop/) | drive a robot; IMU + odom + TF | `ros2 launch rgc_diffdrive_teleop diffdrive.launch.py` | 🟢 code + CI |
 | 05 | [custom-world](recipes/05-custom-world/) | a walled arena: lights, materials, obstacles | `ros2 launch rgc_custom_world custom_world.launch.py` | 🟢 code + CI |
+| 06 | [rviz-config](recipes/06-rviz-config/) | reusable RViz configs (camera/LiDAR/TF) | `ros2 launch rgc_rviz_config rviz.launch.py` | 🟢 code + CI |
 | 07 | [multiple-sensors](recipes/07-multiple-sensors/) | camera + LiDAR + IMU on one robot | `ros2 launch rgc_multiple_sensors multiple_sensors.launch.py` | 🟢 code + CI |
+| 08 | [spawn-from-fuel](recipes/08-spawn-from-fuel/) | pull models from Gazebo Fuel | `ros2 launch rgc_spawn_from_fuel spawn_from_fuel.launch.py` | 🟢 code + CI |
 
 `🟢 code + CI` = builds, launches headless, and the expected ROS topics are
 asserted in CI. Demo GIFs are not recorded yet (see
