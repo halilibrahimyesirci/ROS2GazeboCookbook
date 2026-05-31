@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>rgc_slam</name>
+  <version>0.3.0</version>
+  <description>
+    Recipe 10: build a map with slam_toolbox while driving the reference robot
+    around in Gazebo Harmonic.
+  </description>
+  <maintainer email="halilibrahimyesirci@users.noreply.github.com">Halil İbrahim Yesirci</maintainer>
+  <license>MIT</license>
+  <url type="repository">https://github.com/halilibrahimyesirci/ROS2GazeboCookbook</url>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>rgc_reference_robot</exec_depend>
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>teleop_twist_keyboard</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
