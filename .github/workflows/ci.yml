@@ -93,6 +93,7 @@ jobs:
             topics: "/map,/scan,/clock"
             data_topic: "/map"
             extra_apt: "ros-jazzy-slam-toolbox"
+            smoke_timeout: "75"
     env:
       # Force off-screen, software rendering so camera/LiDAR render without a GPU.
       DISPLAY: ""
@@ -124,7 +125,7 @@ jobs:
         run: |
           source /opt/ros/jazzy/setup.bash
           source install/setup.bash
-          bash tools/smoke_test.sh "${{ matrix.package }}" "${{ matrix.launch }}" "${{ matrix.topics }}"
+          bash tools/smoke_test.sh "${{ matrix.package }}" "${{ matrix.launch }}" "${{ matrix.topics }}" "${{ matrix.smoke_timeout }}"
 
       - name: "Tier 3 - real sensor data (best-effort, non-gating)"
         if: ${{ matrix.data_topic != '' }}

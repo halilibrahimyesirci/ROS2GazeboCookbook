@@ -39,12 +39,17 @@ def launch_setup(context, *args, **kwargs):
         launch_arguments={'headless': headless, 'rviz': 'false'}.items(),
     )
 
-    slam = Node(
-        package='slam_toolbox',
-        executable='async_slam_toolbox_node',
-        name='slam_toolbox',
-        parameters=[slam_params, {'use_sim_time': True}],
-        output='screen',
+    # slam_toolbox is a lifecycle node; its own launch file emits the
+    # configure -> activate transitions (autostart=true), which is what makes
+    # /map appear. Running the bare node would leave it unconfigured.
+    slam = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('slam_toolbox'),
+                         'launch', 'online_async_launch.py')),
+        launch_arguments={
+            'use_sim_time': 'true',
+            'slam_params_file': slam_params,
+        }.items(),
     )
 
     nodes = [sim, slam]
